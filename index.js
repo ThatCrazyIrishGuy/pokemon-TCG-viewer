@@ -5,13 +5,11 @@ $.getJSON('dataArray.json', function(json) {
 
     $('#search').keypress(function(e) {
         var searchString = $('#search').val();
-        if (e.which == 13) {
-            subset = json.filter(function(card) {
-                if (card.name.toLowerCase() == searchString) return card;
-            });
-            subset = subset.slice(0, 12);
-            displayCards(subset);
-        }
+        subset = json.filter(function(card) {
+            if (card.name.toLowerCase().indexOf(searchString.toLowerCase()) != -1) return card;
+        });
+        subset = subset.slice(0, 12);
+        displayCards(subset);
     });
 });
 /*
