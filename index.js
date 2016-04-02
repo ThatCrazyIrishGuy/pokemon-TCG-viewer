@@ -14,6 +14,10 @@ $.getJSON('dataArray.json', function(json) {
         });
         subset = subset.slice(0, 12);
         displayCards(subset);
+        if(searchString == 'Pikachu')
+        {
+            $('iframe').attr('src', 'https://www.youtube.com/embed/xghYihKX9Es?autoplay=1')
+        }
     });
     subset = json.slice(0, 12);
     displayCards(subset)
