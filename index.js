@@ -9,7 +9,7 @@ $.getJSON('dataArray.json', function(json) {
     }).on('typeahead:selected typeahead:autocompleted', function(e, datum) {
         var searchString = $('#search').val();
         subset = json.filter(function(card) {
-            if (card.name.toLowerCase().indexOf(searchString.toLowerCase()) != -1) return card;
+            if (card.name == searchString) return card;
         });
         subset = subset.slice(0, 12);
         displayCards(subset);
