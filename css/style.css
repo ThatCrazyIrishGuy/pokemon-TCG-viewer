@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300,700");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    perspective: 2000px;
+}
+
+.bbg {
+    background-position: 60% 13% !important;
+    background-size: 120% !important;
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    min-height: calc(100% + 200px);
+    height: auto;
+    width: calc(100% + 200px);
+    z-index: -1;
+    background: url("http://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png");
+    background-size: cover;
+    -webkit-filter: blur(42px);
+    transition: 0.5s all ease-in;
+}
+
+.wrapper {
+    height: 100%;
+    display: table;
+    margin: 0 auto;
+}
+
+.wrapper .container {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.wrapper .container .card {
+    height: 300px;
+    width: 1026px;
+    position: relative;
+}
+
+.wrapper .container .card .bg {
+    border-radius: 10px;
+    height: 342px;
+    width: 245px;
+    position: absolute;
+    z-index: 2;
+    background-image: url("http://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png");
+    background-size: 245px 342px;
+    background-position: center;
+    left: 0;
+    top: -25px;
+    transition: 0.5s all ease-in;
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.one {
+    transform: rotateX(10deg) rotateY(-5deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.two {
+    transform: rotateX(10deg) rotateY(0deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.three {
+    transform: rotateX(10deg) rotateY(5deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.four {
+    transform: rotateX(0deg) rotateY(-5deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.five {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+}
+
+.wrapper .container .card .bg.six {
+    transform: rotateX(0deg) rotateY(5deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.seven {
+    transform: rotateX(-10deg) rotateY(-5deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.eight {
+    transform: rotateX(-10deg) rotateY(0deg) translateZ(0);
+}
+
+.wrapper .container .card .bg.nine {
+    transform: rotateX(-10deg) rotateY(5deg) translateZ(0);
+}
+
+.wrapper .container .card .bg:hover {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper .container .card .bg .hover {
+    box-sizing: border-box;
+    height: calc(342px / 3);
+    width: calc(245px / 3);
+    float: left;
+}
+
+.wrapper .container .card .content {
+    height: 100%;
+    width: 100%;
+    background: #eee;
+    border-radius: 10px;
+    position: relative;
+}
+
+.wrapper .container .card .content .padding {
+    height: calc(100% - 100px);
+    width: 275px;
+    padding: 50px 0px 50px 35px;
+    position: absolute;
+    left: 375px;
+}
+
+.wrapper .container .card .content .padding h1 {
+    font-weight: 700;
+    padding: 5px;
+    font-size: 35px;
+}
+
+.wrapper .container .card .content .padding h3 {
+    padding: 5px 5px 20px 5px;
+}
+
+.wrapper .container .card .content .padding h3 table tr td {
+    border-right: 1px solid #999;
+}
+
+.wrapper .container .card .content .padding h3 table tr td:nth-child(3) {
+    border: none;
+}
+
+.wrapper .container .card .content .padding h3 table tr td p {
+    text-align: center;
+    font-weight: 400;
+}
+
+.wrapper .container .card .content .padding h3 table tr td p.star {
+    color: #fbbc05;
+}
+
+.wrapper .container .card .content .padding p {
+    font-weight: 100;
+    padding: 0 5px;
+    font-size: 15px;
+}
+
+.footer {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 297px;
+    right: 0;
+    z-index: 3;
+}
+
+.footer .box {
+    height: calc(100% / 3);
+    width: calc(100% / 4);
+    float: right;
+    background-size: contain;
+    position: relative;
+    cursor: pointer;
+}
+
+.footer .box.active {
+    border: 3px solid #999;
+}
+
+.footer .box:nth-child(1) {
+    border-top-right-radius: 10px;
+}
+
+.footer .box:nth-child(3) {
+    border-bottom-right-radius: 10px;
+}
