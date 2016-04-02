@@ -1,16 +1,21 @@
 $.getJSON('dataArray.json', function(json) {
-    console.log(json);
-    subset = json.slice(0, 12);
-    displayCards(subset)
-
-    $('#search').keypress(function(e) {
+    $('.typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    }, {
+        name: 'cards',
+        source: substringMatcher(json)
+    }).on('typeahead:selected typeahead:autocompleted', function(e, datum) {
         var searchString = $('#search').val();
         subset = json.filter(function(card) {
             if (card.name.toLowerCase().indexOf(searchString.toLowerCase()) != -1) return card;
         });
         subset = subset.slice(0, 12);
         displayCards(subset);
-    });
+        });
+    subset = json.slice(0, 12);
+    displayCards(subset)
 });
 /*
 
@@ -34,9 +39,6 @@ function displayCards(cards) {
     cards.forEach(function(card) {
         var id = card.image.replace(/\W/g, '');
         $('.footer').append(`<div style="background-image: url('${card.image}')" class="box active" id="${id}"></div>`)
-        $('<img/>').attr('src', 'card.image').load(function() {
-            $(this).remove();
-        });
         $("#" + id).click(function() {
             $(".box").removeClass("active");
             $(this).addClass("active");
@@ -63,3 +65,18 @@ function displayCards(cards) {
         });
     });
 }
+
+var substringMatcher = function(strs) {
+    return function findMatches(q, cb) {
+        var matches, substringRegex;
+        matches = [];
+        substrRegex = new RegExp(q, 'i');
+        $.each(strs, function(i, str) {
+            if (substrRegex.test(str.name) && matches.indexOf(str.name) < 0) {
+
+                matches.push(str.name);
+            }
+        });
+        cb(matches);
+    };
+};
