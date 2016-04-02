@@ -335,3 +335,13 @@ i {
     display: inline-block;
     margin: 5px;
 }
+
+.in-table {
+    margin: 0;
+    padding: 0;
+}
+
+td.detail{
+    vertical-align: top;
+    padding-bottom: .5em;
+}

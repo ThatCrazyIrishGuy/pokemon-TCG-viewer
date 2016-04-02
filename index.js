@@ -1,4 +1,5 @@
 $.getJSON('dataArray.json', function(json) {
+    console.log(json);
     $('.typeahead').typeahead({
         hint: true,
         highlight: true,
@@ -40,13 +41,14 @@ function displayCards(cards) {
         var id = card.image.replace(/\W/g, '');
         $(`<div style="background-image: url('${card.image}')" class="box active" id="${id}"></div>`).hide().appendTo(".footer").fadeIn(500);;
         $("#" + id).click(function() {
+            $('.padding').children('.desc').remove();
             $(".box").removeClass("active");
             $(this).addClass("active");
             $(".bbg").css("background-image", "url(" + card.image + ")");
             $(".bg").css("background-image", "url(" + card.image + ")");
             setTimeout(
                 function() {
-                    $(".content h1").html(card.name);
+                    $(".content h2").html(card.name);
                     $(".content h3").html("<table>" +
                         "<tr>" +
                         "<td> " +
@@ -58,9 +60,18 @@ function displayCards(cards) {
                         "<td>" +
                         "<p>" + card.type + "</p>" +
                         "</td>" +
-                        "</tr>" +
-                        "</table>");
-                    $(".content .desc").html(card.abilities[0].text);
+                        "</tr>");
+                    var html = '';
+                    card.abilities.forEach(function(ability){
+                        html += `<tr class="name"><td>${ability.name}</td><td>${ability.damage}</td></tr>`;
+                        html += '<tr><td class="detail"><p class="desc">'+ ability.text +'</br></p></td>';
+                        ability.cost.forEach(function(eCost){
+                            html += `<td class="detail"><i title="${eCost}" class="in-table energy icon-${eCost}"</i></td>`;
+                        });
+                        html += '</tr>';
+                    });
+                    html+= "</table>";
+                    $(".content h3").append(html);
                 }, 500);
         });
     });
