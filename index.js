@@ -13,7 +13,6 @@ $.getJSON('dataArray.json', function(json) {
         });
         subset = subset.slice(0, 12);
         displayCards(subset);
-        $('.footer > div:first').delay(250).trigger('click');
     });
     subset = json.slice(0, 12);
     displayCards(subset)
@@ -39,7 +38,7 @@ function displayCards(cards) {
     $('.footer').empty();
     cards.forEach(function(card) {
         var id = card.image.replace(/\W/g, '');
-        $('.footer').append(`<div style="background-image: url('${card.image}')" class="box active" id="${id}"></div>`)
+        $(`<div style="background-image: url('${card.image}')" class="box active" id="${id}"></div>`).hide().appendTo(".footer").fadeIn(500);;
         $("#" + id).click(function() {
             $(".box").removeClass("active");
             $(this).addClass("active");
