@@ -14,10 +14,6 @@ $.getJSON('dataArray.json', function(json) {
         });
         subset = subset.slice(0, 12);
         displayCards(subset);
-        if(searchString == 'Pikachu')
-        {
-            $('iframe').attr('src', 'https://www.youtube.com/embed/xghYihKX9Es?autoplay=1')
-        }
     });
     subset = json.slice(0, 12);
     displayCards(subset)
@@ -45,6 +41,7 @@ function displayCards(cards) {
         var id = card.image.replace(/\W/g, '');
         $(`<div style="background-image: url('${card.image}')" class="box active" id="${id}"></div>`).hide().appendTo(".footer").fadeIn(500);;
         $("#" + id).click(function() {
+            $('audio').attr('src', 'sounds/' + card.name + '.wav');
             $('.padding').children('.desc').remove();
             $(".box").removeClass("active");
             $(this).addClass("active");
