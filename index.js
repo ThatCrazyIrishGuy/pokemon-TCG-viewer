@@ -50,7 +50,7 @@ function displayCards(cards) {
                     $(".content h3").html("<table>" +
                         "<tr>" +
                         "<td> " +
-                        "<p>" + card.color + "</p>" +
+                        "<i class='energy icon-"+ card.color +"' title='"+ card.color +"' ></i>" +
                         "</td>" +
                         "<td>" +
                         "<p>" + card.superType + "</p>" +
