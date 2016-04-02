@@ -13,7 +13,7 @@ $.getJSON('dataArray.json', function(json) {
         });
         subset = subset.slice(0, 12);
         displayCards(subset);
-        $('.footer > div:first').delay(100).trigger('click');
+        $('.footer > div:first').delay(250).trigger('click');
     });
     subset = json.slice(0, 12);
     displayCards(subset)
