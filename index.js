@@ -39,6 +39,7 @@ function displayCards(cards) {
     $('.footer').empty();
     cards.forEach(function(card) {
         var id = card.image.replace(/\W/g, '');
+        card.image = card.image.replace(/^http:\/\//i, 'https://');
         $(`<div style="background-image: url('${card.image}')" class="box active" id="${id}"></div>`).hide().appendTo(".footer").fadeIn(500);;
         $("#" + id).click(function() {
             $('audio').attr('src', 'sounds/' + card.name + '.wav');
