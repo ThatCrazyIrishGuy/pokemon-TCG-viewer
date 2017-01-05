@@ -37,6 +37,7 @@ $.getJSON('dataArray.json', function(json) {
     });
     json.forEach(function(card) {
         timeouts.push(setTimeout(function() {
+            card.image = card.image.replace(/^http:\/\//i, 'https://');
             $.ajax({
                 url: card.image,
                 cache: true,
