@@ -20,6 +20,7 @@ $.getJSON('dataArray.json', function(json) {
         counter = 1;
         var searchString = $('#search').val();
         json.forEach(function(card) {
+            card.image = card.image.replace(/^http:\/\//i, 'https://');
             if (card.name == searchString) {
                 timeouts.push(setTimeout(function() {
                     $.ajax({
